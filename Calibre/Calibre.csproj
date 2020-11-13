@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\SQLite.3.13.0\build\net45\SQLite.props" Condition="Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0890C612-E1B2-4B3F-BE28-9F404FFC50B2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Calibre</RootNamespace>
+    <AssemblyName>Numeri%27Book</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>iconNumeriBook.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.HTML, Version=19.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.HTML.19.11.0\lib\net40\Aspose.HTML.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.PDF, Version=19.11.0.0, Culture=neutral, PublicKeyToken=f0262d67fe233d63, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.PDF.19.11.0\lib\net4.0\Aspose.PDF.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=19.11.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Words.19.11.0\lib\net40\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="eBdb.EpubReader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\epubReader.1.0.0\lib\net40\eBdb.EpubReader.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <HintPath>..\packages\epubReader.1.0.0\lib\net40\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VersOne.Epub, Version=3.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\VersOne.Epub.3.0.3.1\lib\net46\VersOne.Epub.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Active.cs" />
+    <Compile Include="Bibliotheque.cs" />
+    <Compile Include="ClassEpubRead.cs" />
+    <Compile Include="ConfirmationSupprBiblio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmationSupprBiblio.designer.cs">
+      <DependentUpon>ConfirmationSupprBiblio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConnectSQLite.cs" />
+    <Compile Include="DesignCircularButtons.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExceptionHandler.cs" />
+    <Compile Include="FRM_Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_Confirmation.designer.cs">
+      <DependentUpon>FRM_Confirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_ConfirmationContinuation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_ConfirmationContinuation.designer.cs">
+      <DependentUpon>FRM_ConfirmationContinuation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_Erreur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_Erreur.designer.cs">
+      <DependentUpon>FRM_Erreur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_LivreExisteDeja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_LivreExisteDeja.Designer.cs">
+      <DependentUpon>FRM_LivreExisteDeja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_NumeriBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_NumeriBook.Designer.cs">
+      <DependentUpon>FRM_NumeriBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_SelecSVP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_SelecSVP.designer.cs">
+      <DependentUpon>FRM_SelecSVP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_TropDeFichier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_TropDeFichier.designer.cs">
+      <DependentUpon>FRM_TropDeFichier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Livres.cs" />
+    <Compile Include="Manuel.cs" />
+    <Compile Include="Onglets\Ajout\ClassAjout.cs" />
+    <Compile Include="Onglets\Bibliotheque\FRM_Biblio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Bibliotheque\FRM_Biblio.designer.cs">
+      <DependentUpon>FRM_Biblio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\ConvertirEPUB\FRM_ConvertirGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\ConvertirEPUB\FRM_ConvertirGuide.designer.cs">
+      <DependentUpon>FRM_ConvertirGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Editer\FRM_Editer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Editer\FRM_Editer.Designer.cs">
+      <DependentUpon>FRM_Editer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Editer_Metadonnees\EditerMetadonnees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Editer_Metadonnees\EditerMetadonnees.Designer.cs">
+      <DependentUpon>EditerMetadonnees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\EjectUSB.cs" />
+    <Compile Include="Onglets\Périphérique\FRM_DialogueAutorisation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_DialogueAutorisation.designer.cs">
+      <DependentUpon>FRM_DialogueAutorisation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_DialogueLivreLiseuse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_DialogueLivreLiseuse.designer.cs">
+      <DependentUpon>FRM_DialogueLivreLiseuse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_DialogueTransfert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_DialogueTransfert.Designer.cs">
+      <DependentUpon>FRM_DialogueTransfert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_LoadingLiseuse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_LoadingLiseuse.Designer.cs">
+      <DependentUpon>FRM_LoadingLiseuse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\FRM_unitLiber_peripherique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\Hash.cs" />
+    <Compile Include="Onglets\Périphérique\LiaisonAppLiseuse.cs" />
+    <Compile Include="Onglets\Périphérique\Liseuse.cs" />
+    <Compile Include="Onglets\Périphérique\Notification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Onglets\Périphérique\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Recherhce\FRM_Recherhce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\Recherhce\FRM_Recherhce.designer.cs">
+      <DependentUpon>FRM_Recherhce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Onglets\Recherhce\Recherche_Partial_numeribook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\VisualiserEPUB\FRM_Visualiser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Onglets\VisualiserEPUB\FRM_Visualiser.Designer.cs">
+      <DependentUpon>FRM_Visualiser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="popupnomdos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="popupnomdos.designer.cs">
+      <DependentUpon>popupnomdos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveConfirm.designer.cs">
+      <DependentUpon>SaveConfirm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ConfirmationSupprBiblio.resx">
+      <DependentUpon>ConfirmationSupprBiblio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_Confirmation.resx">
+      <DependentUpon>FRM_Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_ConfirmationContinuation.resx">
+      <DependentUpon>FRM_ConfirmationContinuation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_Erreur.resx">
+      <DependentUpon>FRM_Erreur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_LivreExisteDeja.resx">
+      <DependentUpon>FRM_LivreExisteDeja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_NumeriBook.resx">
+      <DependentUpon>FRM_NumeriBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_SelecSVP.resx">
+      <DependentUpon>FRM_SelecSVP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_TropDeFichier.resx">
+      <DependentUpon>FRM_TropDeFichier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Bibliotheque\FRM_Biblio.resx">
+      <DependentUpon>FRM_Biblio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\ConvertirEPUB\FRM_ConvertirGuide.resx">
+      <DependentUpon>FRM_ConvertirGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Editer\FRM_Editer.resx">
+      <DependentUpon>FRM_Editer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Editer_Metadonnees\EditerMetadonnees.resx">
+      <DependentUpon>EditerMetadonnees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Périphérique\FRM_DialogueAutorisation.resx">
+      <DependentUpon>FRM_DialogueAutorisation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Périphérique\FRM_DialogueLivreLiseuse.resx">
+      <DependentUpon>FRM_DialogueLivreLiseuse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Périphérique\FRM_DialogueTransfert.resx">
+      <DependentUpon>FRM_DialogueTransfert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Périphérique\FRM_LoadingLiseuse.resx">
+      <DependentUpon>FRM_LoadingLiseuse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Périphérique\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\Recherhce\FRM_Recherhce.resx">
+      <DependentUpon>FRM_Recherhce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Onglets\VisualiserEPUB\FRM_Visualiser.resx">
+      <DependentUpon>FRM_Visualiser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="popupnomdos.resx">
+      <DependentUpon>popupnomdos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SaveConfirm.resx">
+      <DependentUpon>SaveConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="iconNumeriBook.ico" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\auteurs.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\book-open-flat\128x128.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\book-open-flat\16x16.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\book-open-flat\256x256.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\book-open-flat\32x32.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\book-open-flat\512x512.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\book-open-flat\64x64.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\clear.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\clear02.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\document-edit-flat\128x128.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\document-edit-flat\16x16.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\document-edit-flat\256x256.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\document-edit-flat\32x32.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\document-edit-flat\512x512.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\document-edit-flat\64x64.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\edit.svg" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\edit02.jpg" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\Epub.bmp" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\Epub.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\Epub1.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\Epub50.bmp" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\EpubIcon.jpg" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\Epub\EpubIcon.jpg" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\Icon.ico" />
+    <None Include="Onglets\Editer_Metadonnees\picture\justifier.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\shopping-bag-flat\128x128.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\shopping-bag-flat\16x16.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\shopping-bag-flat\256x256.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\shopping-bag-flat\32x32.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\shopping-bag-flat\512x512.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\shopping-bag-flat\64x64.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\TestImage.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\trash-var-flat\128x128.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\trash-var-flat\16x16.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\trash-var-flat\256x256.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\trash-var-flat\32x32.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\trash-var-flat\512x512.png" />
+    <Content Include="Onglets\Editer_Metadonnees\picture\trash-var-flat\64x64.png" />
+    <Content Include="pictures\annotation1.png" />
+    <Content Include="pictures\auteurs.png" />
+    <Content Include="pictures\book-open-flat\128x128.png" />
+    <Content Include="pictures\book-open-flat\16x16.png" />
+    <Content Include="pictures\book-open-flat\256x256.png" />
+    <Content Include="pictures\book-open-flat\32x32.png" />
+    <Content Include="pictures\book-open-flat\512x512.png" />
+    <Content Include="pictures\book-open-flat\64x64.png" />
+    <Content Include="pictures\chapter1.png" />
+    <Content Include="pictures\clear.png" />
+    <Content Include="pictures\clear02.png" />
+    <Content Include="pictures\document-edit-flat\128x128.png" />
+    <Content Include="pictures\document-edit-flat\16x16.png" />
+    <Content Include="pictures\document-edit-flat\256x256.png" />
+    <Content Include="pictures\document-edit-flat\32x32.png" />
+    <Content Include="pictures\document-edit-flat\512x512.png" />
+    <Content Include="pictures\document-edit-flat\64x64.png" />
+    <Content Include="pictures\edit.svg" />
+    <Content Include="pictures\edit02.jpg" />
+    <Content Include="pictures\Epub.bmp" />
+    <Content Include="pictures\Epub.png" />
+    <Content Include="pictures\Epub1.png" />
+    <Content Include="pictures\Epub50.bmp" />
+    <Content Include="pictures\EpubIcon.jpg" />
+    <Content Include="pictures\Epub\EpubIcon.jpg" />
+    <Content Include="pictures\fontdown1.png" />
+    <Content Include="pictures\FullScreen2.png" />
+    <Content Include="pictures\Icon.ico" />
+    <Content Include="pictures\Icon1.ico" />
+    <Content Include="pictures\Icon1.png" />
+    <Content Include="pictures\iconajout.ico" />
+    <Content Include="pictures\iconajout.png" />
+    <Content Include="pictures\iconbiblioth__que.ico" />
+    <Content Include="pictures\iconbiblioth__que.png" />
+    <Content Include="pictures\iconediter.ico" />
+    <Content Include="pictures\iconediter.png" />
+    <Content Include="pictures\iconenregister.ico" />
+    <Content Include="pictures\iconenregister.png" />
+    <Content Include="pictures\iconformat.ico" />
+    <Content Include="pictures\iconformat.png" />
+    <Content Include="pictures\IconNumB.ico" />
+    <Content Include="pictures\IconNumB.png" />
+    <Content Include="pictures\iconrecherche.ico" />
+    <Content Include="pictures\iconrecherche.jpg" />
+    <Content Include="pictures\IconSio.ico" />
+    <Content Include="pictures\iconSio.jpg" />
+    <Content Include="pictures\iconvisualisation.ico" />
+    <Content Include="pictures\iconvisualisation.png" />
+    <Content Include="pictures\Info2.png" />
+    <Content Include="pictures\Left.png" />
+    <Content Include="pictures\livre.png" />
+    <Content Include="pictures\Next.png" />
+    <Content Include="pictures\shopping-bag-flat\128x128.png" />
+    <Content Include="pictures\shopping-bag-flat\16x16.png" />
+    <Content Include="pictures\shopping-bag-flat\256x256.png" />
+    <Content Include="pictures\shopping-bag-flat\32x32.png" />
+    <Content Include="pictures\shopping-bag-flat\512x512.png" />
+    <Content Include="pictures\shopping-bag-flat\64x64.png" />
+    <Content Include="pictures\TestImage.png" />
+    <Content Include="pictures\trash-var-flat\128x128.png" />
+    <Content Include="pictures\trash-var-flat\16x16.png" />
+    <Content Include="pictures\trash-var-flat\256x256.png" />
+    <Content Include="pictures\trash-var-flat\32x32.png" />
+    <Content Include="pictures\trash-var-flat\512x512.png" />
+    <Content Include="pictures\trash-var-flat\64x64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SQLite.3.13.0\build\net45\SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLite.3.13.0\build\net45\SQLite.props'))" />
+  </Target>
+</Project>
